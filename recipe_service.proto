@@ -48,6 +48,7 @@ message RecipeDietaryInformation {
     bool is_gluten_free = 3;
     bool contains_alcohol = 4;
     bool contains_nuts = 5;
+    bool contains_dairy = 6;
 }
 
 message SearchRecipesByNameRequest {
