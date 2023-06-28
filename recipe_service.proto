@@ -3,7 +3,7 @@ package wastenot;
 
 option java_package = "org.cs446_35.wastenot";
 
-import "common.proto";
+import "proto/common.proto";
 
 message Recipe {
     string name = 1;
