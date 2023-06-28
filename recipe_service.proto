@@ -49,6 +49,7 @@ message RecipeDietaryInformation {
     bool contains_alcohol = 4;
     bool contains_nuts = 5;
     bool contains_dairy = 6;
+    bool contains_eggs = 7;
 }
 
 message SearchRecipesByNameRequest {
