@@ -1,0 +1,53 @@
+syntax="proto3";
+package wastenot;
+
+option java_package = "org.cs446_35.wastenot";
+
+import "common.proto";
+
+message Recipe {
+    string name = 1;
+    string description = 2;
+    repeated Ingredient ingredients = 3;
+    repeated string steps = 4;
+
+    RecipeMetadata metadata = 5;
+}
+
+message Ingredient {
+    string name = 1;
+    Amount amount = 2;
+    bool optional = 3;
+    string notes = 4;
+}
+
+message RecipeMetadata {
+    repeated string tags = 1;
+    int32 minutes_to_prep = 2;
+    int32 minutes_to_cook = 3;
+    int32 minutes_total = 4;
+    int32 difficulty = 5;
+    ServingRange servings = 6;
+    int32 estimated_calories = 7;
+    string image_url = 8;
+    string image_alt = 9;
+    string source_url = 10;
+
+    RecipeDietaryInformation dietary = 11;
+}
+
+message ServingRange {
+    int32 min = 1;
+    int32 max = 2;
+    string alternative = 3;
+}
+
+message RecipeDietaryInformation {
+    bool is_vegetarian = 1;
+    bool is_vegan = 2;
+    bool is_gluten_free = 3;
+    bool contains_alcohol = 4;
+    bool contains_nuts = 5;
+    bool contains_dairy = 6;
+    bool contains_eggs = 7;
+}

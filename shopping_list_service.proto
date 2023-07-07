@@ -1,0 +1,97 @@
+syntax="proto3";
+package wastenot;
+
+option java_package = "org.cs446_35.wastenot";
+
+import "common.proto";
+
+service ShoppingListService {
+    rpc GetAllShoppingLists (GetAllShoppingListsRequest) returns (GetAllShoppingListsResponse);
+    rpc GetShoppingList (GetShoppingListRequest) returns (GetShoppingListResponse);
+    rpc CreateShoppingList (CreateShoppingListRequest) returns (CreateShoppingListResponse);
+    rpc AddItemToShoppingList (AddItemToShoppingListRequest) returns (AddItemToShoppingListResponse);
+    rpc RemoveItemFromList (RemoveItemFromListRequest) returns (RemoveItemFromListResponse);
+    rpc AddUserToShoppingList (AddUserToShoppingListRequest) returns (AddUserToShoppingListResponse);
+    rpc RemoveUserFromShoppingList (RemoveUserFromShoppingListRequest) returns (RemoveUserFromShoppingListResponse);
+}
+
+message ShoppingListItem {
+    string name = 1;
+    Amount quantity = 2;
+    bool checked = 3;
+}
+
+message ShoppingList {
+    string id = 1;
+    string name = 2;
+    repeated ShoppingListItem items = 3;
+
+    string owner_id = 4;
+    repeated string user_ids = 5;
+}
+
+message GetAllShoppingListsRequest {
+    string user_id = 1;
+}
+
+message GetAllShoppingListsResponse {
+    repeated ShoppingList lists = 1;
+}
+
+message GetShoppingListRequest {
+    string user_id = 1;
+    string list_id = 2;
+}
+
+message GetShoppingListResponse {
+    ShoppingList list = 1;
+}
+
+message CreateShoppingListRequest {
+    string user_id = 1;
+    string name = 2;
+}
+
+message CreateShoppingListResponse {
+    ShoppingList list = 1;
+}
+
+message AddItemToShoppingListRequest {
+    string user_id = 1;
+    string list_id = 2;
+    string name = 3;
+    Amount quantity = 4;
+}
+
+message AddItemToShoppingListResponse {
+    ShoppingList list = 1;
+}
+
+message RemoveItemFromListRequest {
+    string user_id = 1;
+    string list_id = 2;
+    int32 item_index = 3;
+}
+
+message RemoveItemFromListResponse {
+}
+
+message AddUserToShoppingListRequest {
+    string user_id = 1;
+    string list_id = 2;
+    string new_user_id = 3;
+}
+
+message AddUserToShoppingListResponse {
+    ShoppingList list = 1;
+}
+
+message RemoveUserFromShoppingListRequest {
+    string user_id = 1;
+    string list_id = 2;
+    string remove_user_id = 3;
+}
+
+message RemoveUserFromShoppingListResponse {
+    ShoppingList list = 1;
+}
